@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %} contact {% endblock %}
+{% block content %}
+ <section class="contact-hero">
+    <div class="contact-hero-content">
+        <span class="contact-subtitle">GET IN TOUCH</span>
+        <h1>We Are Here to Help You Smile</h1>
+        <p>
+            Have a question about your dental health or our services?
+            Contact our friendly team. We would love to hear from you.
+        </p>
+    </div>
+</section>
+
+<section class="contact-main">
+
+    <!-- Contact Information -->
+    <div class="contact-info-panel">
+        <span class="contact-subtitle">CONTACT INFORMATION</span>
+        <h2>Let's Talk About Your Smile</h2>
+        <p class="contact-info-description">
+            Reach out to us for general inquiries, clinic information,
+            or assistance with your visit.
+        </p>
+
+        <div class="contact-info-item">
+            <div class="contact-icon">📍</div>
+            <div>
+                <h3>Our Address</h3>
+                <p>New Delhi, India</p>
+            </div>
+        </div>
+
+        <div class="contact-info-item">
+            <div class="contact-icon">📞</div>
+            <div>
+                <h3>Phone Number</h3>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+        </div>
+
+        <div class="contact-info-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+                <h3>Email Address</h3>
+                <a href="mailto:care@example.com">care@example.com</a>
+            </div>
+        </div>
+
+        <div class="contact-info-item">
+            <div class="contact-icon">🕒</div>
+            <div>
+                <h3>Working Hours</h3>
+                <p>Monday – Saturday</p>
+                <p>9:00 AM – 7:00 PM</p>
+            </div>
+        </div>
+
+        <div class="contact-social">
+            <h3>We're happy to hear from you!</h3>
+            <p>Your questions and feedback are important to us.</p>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form-panel">
+        <span class="contact-subtitle">SEND US A MESSAGE</span>
+        <h2>How Can We Help?</h2>
+        <p class="contact-form-description">
+            Fill in the details below and our team can get back to you.
+        </p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="contact-alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" action="{% url 'contact' %}">
+            {% csrf_token %}
+
+            <div class="contact-form-row">
+                <div class="contact-field">
+                    <label for="contact-name">Full Name</label>
+                    <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required>
+                </div>
+
+                <div class="contact-field">
+                    <label for="contact-email">Email Address</label>
+                    <input
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+                </div>
+            </div>
+
+            <div class="contact-field">
+                <label for="contact-subject">Subject</label>
+                <input
+                    type="text"
+                    id="contact-subject"
+                    name="subject"
+                    placeholder="What would you like to ask?"
+                    required>
+            </div>
+
+            <div class="contact-field">
+                <label for="contact-message">Your Message</label>
+                <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="6"
+                    placeholder="Write your message here..."
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit-btn">
+                Send Message <span>→</span>
+            </button>
+        </form>
+
+        <p class="contact-privacy">
+            Your information will be handled according to our privacy practices.
+        </p>
+    </div>
+
+</section>
+
+<section class="contact-bottom">
+    <div>
+        <span class="contact-subtitle">YOUR SMILE MATTERS</span>
+        <h2>Need to Schedule a Dental Visit?</h2>
+        <p>Request an appointment with our dental care team.</p>
+    </div>
+
+    <a href="{% url 'appointment' %}" class="contact-bottom-btn">
+        Book an Appointment →
+    </a>
+</section>
+
+{% endblock %}

@@ -1,0 +1,315 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | Dental Care Clinic{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="home-hero">
+    <div class="hero-bg-circle"></div>
+
+    <div class="hero-container">
+
+        <div class="hero-content reveal">
+            <span class="hero-label">
+                <span class="status-dot"></span>
+                YOUR TRUSTED DENTAL CARE PARTNER
+            </span>
+
+            <h1>
+                A Healthier Smile,
+                <span>A Happier You.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover comfortable, modern dental care designed
+                around you. Our team is here to help you smile
+                brighter and feel more confident every day.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'appointment' %}" class="btn-primary">
+                    Book Appointment <span>↗</span>
+                </a>
+
+                <a href="{% url 'services' %}" class="btn-secondary">
+                    Explore Services <span>→</span>
+                </a>
+            </div>
+
+            <div class="hero-trust">
+                <div class="trust-avatars">
+                    <span>😊</span>
+                    <span>😁</span>
+                    <span>🙂</span>
+                </div>
+
+                <div class="trust-text">
+                    <strong>Care that makes you smile</strong>
+                    <p>Gentle treatment. Personal attention.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero-visual reveal">
+            <div class="hero-image-wrap">
+                <img
+                    src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1000&q=85"
+                    alt="Professional dentist providing dental care"
+                    class="hero-image"
+                >
+                <div class="image-overlay"></div>
+            </div>
+
+            <div class="floating-card floating-card-top">
+                <div class="floating-icon">✦</div>
+                <div>
+                    <strong>Gentle Care</strong>
+                    <p>Comfort comes first</p>
+                </div>
+            </div>
+
+            <div class="floating-card floating-card-bottom">
+                <div class="floating-check">✓</div>
+                <div>
+                    <strong>Your Smile Matters</strong>
+                    <p>Personalized dental care</p>
+                </div>
+            </div>
+
+            <div class="hero-circle-text">
+                SMILE WITH CONFIDENCE
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hero-bottom">
+        <span>SCROLL TO DISCOVER</span>
+        <span class="scroll-line"></span>
+    </div>
+</section>
+
+
+<!-- Animated Statistics Section -->
+<section class="home-stats">
+    <div class="stats-container">
+
+        <div class="stat-item reveal">
+            <h2>
+                <span
+                    class="counter"
+                    data-target="10"
+                    data-suffix="+"
+                >1</span>
+            </h2>
+            <p>Years of Experience</p>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item reveal">
+            <h2>
+                <span
+                    class="counter"
+                    data-target="5000"
+                    data-suffix="+"
+                    data-format="short"
+                >1</span>
+            </h2>
+            <p>Patients Served</p>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item reveal">
+            <h2>
+                <span
+                    class="counter"
+                    data-target="6"
+                    data-suffix="+"
+                >1</span>
+            </h2>
+            <p>Dental Services</p>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item reveal">
+            <h2>
+                <span
+                    class="counter"
+                    data-target="100"
+                    data-suffix="%"
+                >1</span>
+            </h2>
+            <p>Patient-Focused Care</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Service Preview -->
+<section class="home-services section-padding">
+    <div class="section-container">
+
+        <div class="section-heading reveal">
+            <span class="section-label">OUR EXPERTISE</span>
+            <h2>Complete Care for <span>Every Smile.</span></h2>
+            <p>
+                From routine checkups to advanced treatments,
+                discover dental care designed for your needs.
+            </p>
+        </div>
+
+        <div class="service-preview-grid">
+
+            <a href="{% url 'services' %}" class="preview-card reveal">
+                <div class="preview-icon">🦷</div>
+                <span class="card-number">01 / PREVENT</span>
+                <h3>General Dentistry</h3>
+                <p>
+                    Keep your teeth and gums healthy with
+                    regular checkups and preventive care.
+                </p>
+                <span class="card-link">Explore services ↗</span>
+            </a>
+
+            <a href="{% url 'services' %}" class="preview-card reveal">
+                <div class="preview-icon">✨</div>
+                <span class="card-number">02 / ENHANCE</span>
+                <h3>Cosmetic Dentistry</h3>
+                <p>
+                    Explore treatments that can help you achieve
+                    a brighter, more confident smile.
+                </p>
+                <span class="card-link">Explore services ↗</span>
+            </a>
+
+            <a href="{% url 'services' %}" class="preview-card reveal">
+                <div class="preview-icon">😁</div>
+                <span class="card-number">03 / RESTORE</span>
+                <h3>Restorative Care</h3>
+                <p>
+                    Discover personalized options to restore
+                    your teeth and support your oral health.
+                </p>
+                <span class="card-link">Explore services ↗</span>
+            </a>
+
+        </div>
+
+        <div class="section-footer reveal">
+            <a href="{% url 'services' %}" class="text-link">
+                View All Services <span>→</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Why Choose Us -->
+<section class="home-about">
+    <div class="about-container">
+
+        <div class="about-visual reveal">
+            <img
+                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=85"
+                alt="Modern and welcoming dental clinic"
+                loading="lazy"
+            >
+
+            <div class="about-image-note">
+                <span>✦</span>
+                <div>
+                    <strong>Your Comfort First</strong>
+                    <p>A welcoming dental experience</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-content reveal">
+            <span class="section-label">WHY CHOOSE US</span>
+
+            <h2>
+                Dentistry That Puts
+                <span>You First.</span>
+            </h2>
+
+            <p class="about-description">
+                We believe great dental care starts with listening.
+                Our approach combines modern techniques, clear
+                communication, and personalized attention to help
+                make every visit more comfortable.
+            </p>
+
+            <div class="about-feature">
+                <span class="feature-check">✓</span>
+                <div>
+                    <h4>Experienced Professionals</h4>
+                    <p>Care from a dedicated dental team.</p>
+                </div>
+            </div>
+
+            <div class="about-feature">
+                <span class="feature-check">✓</span>
+                <div>
+                    <h4>Modern Dental Care</h4>
+                    <p>Treatment options tailored to your needs.</p>
+                </div>
+            </div>
+
+            <div class="about-feature">
+                <span class="feature-check">✓</span>
+                <div>
+                    <h4>A Comfortable Experience</h4>
+                    <p>Friendly guidance at every step.</p>
+                </div>
+            </div>
+
+            <a href="{% url 'about' %}" class="btn-primary about-button">
+                Discover Our Clinic <span>↗</span>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Final Call to Action -->
+<section class="home-cta">
+    <div class="cta-decoration"></div>
+
+    <div class="cta-content reveal">
+        <span class="section-label">YOUR SMILE STARTS HERE</span>
+
+        <h2>
+            Ready to Love
+            <span>Your Smile?</span>
+        </h2>
+
+        <p>
+            Take the first step toward a healthier smile.
+            Our team is ready to help you plan your visit.
+        </p>
+
+        <a href="{% url 'appointment' %}" class="btn-light">
+            Schedule Your Visit <span>↗</span>
+        </a>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/home.js' %}" defer></script>
+{% endblock %}

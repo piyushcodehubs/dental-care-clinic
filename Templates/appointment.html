@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+{% endblock %}
+{% block title %}Book Appointment | DentalCare{% endblock %}
+
+{% block content %}
+
+<section class="appointment-hero">
+    <div class="appointment-hero-content">
+        <span class="appointment-subtitle">YOUR SMILE STARTS HERE</span>
+        <h1>Book Your Dental Appointment</h1>
+        <p>
+            Take the first step toward a healthier smile.
+            Submit your preferred date and time, and our clinic
+            will contact you to confirm availability.
+        </p>
+    </div>
+</section>
+
+<section class="appointment-main">
+
+    <!-- Booking Information -->
+    <div class="appointment-sidebar">
+        <span class="appointment-subtitle">YOUR VISIT</span>
+        <h2>Let's Make Your Smile a Priority</h2>
+
+        <p class="appointment-sidebar-description">
+            Complete the appointment request form. Our team can
+            contact you to discuss your visit and confirm a suitable time.
+        </p>
+
+        <div class="appointment-step">
+            <div class="appointment-step-number">1</div>
+            <div>
+                <h3>Fill Out the Form</h3>
+                <p>Tell us your contact details and preferred service.</p>
+            </div>
+        </div>
+
+        <div class="appointment-step">
+            <div class="appointment-step-number">2</div>
+            <div>
+                <h3>We'll Contact You</h3>
+                <p>Our team can discuss the date and time you requested.</p>
+            </div>
+        </div>
+
+        <div class="appointment-step">
+            <div class="appointment-step-number">3</div>
+            <div>
+                <h3>Confirm Your Visit</h3>
+                <p>Your appointment is confirmed once the clinic agrees.</p>
+            </div>
+        </div>
+
+        <div class="appointment-help">
+            <span>📞</span>
+            <div>
+                <h3>Need Help Booking?</h3>
+                <p>Call us at</p>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Appointment Form -->
+    <div class="appointment-form-panel">
+        <span class="appointment-subtitle">APPOINTMENT REQUEST</span>
+        <h2>Patient Information</h2>
+        <p class="appointment-form-description">
+            Fields marked with * are required.
+        </p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="appointment-alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" action="{% url 'appointment' %}">
+            {% csrf_token %}
+
+            <div class="appointment-form-grid">
+
+                <div class="appointment-field">
+                    <label for="patient-name">Full Name *</label>
+                    <input
+                        type="text"
+                        id="patient-name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+                </div>
+
+                <div class="appointment-field">
+                    <label for="patient-phone">Phone Number *</label>
+                    <input
+                        type="tel"
+                        id="patient-phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required>
+                </div>
+
+                <div class="appointment-field">
+                    <label for="patient-email">Email Address *</label>
+                    <input
+                        type="email"
+                        id="patient-email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required>
+                </div>
+
+                <div class="appointment-field">
+                    <label for="patient-service">Dental Service *</label>
+                    <select id="patient-service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="General Dentistry">General Dentistry</option>
+                        <option value="Dental Checkup">Dental Checkup</option>
+                        <option value="Teeth Whitening">Teeth Whitening</option>
+                        <option value="Braces and Alignment">Braces & Alignment</option>
+                        <option value="Root Canal Treatment">Root Canal Treatment</option>
+                        <option value="Children's Dentistry">Children's Dentistry</option>
+                        <option value="Dental Implants">Dental Implants</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="appointment-field">
+                    <label for="appointment-date">Preferred Date *</label>
+                    <input
+                        type="date"
+                        id="appointment-date"
+                        name="date"
+                        required>
+                </div>
+
+                <div class="appointment-field">
+                    <label for="appointment-time">Preferred Time *</label>
+                    <select id="appointment-time" name="time" required>
+                        <option value="">Select a time</option>
+                        <option value="09:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                    </select>
+                </div>
+
+                <div class="appointment-field appointment-field-full">
+                    <label for="appointment-message">
+                        Additional Information
+                    </label>
+                    <textarea
+                        id="appointment-message"
+                        name="message"
+                        rows="4"
+                        placeholder="Tell us anything you'd like us to know (optional)"></textarea>
+                </div>
+
+            </div>
+
+            <div class="appointment-notice">
+                <span>ℹ️</span>
+                <p>
+                    This is an appointment request, not a confirmed booking.
+                    Please wait for confirmation from our clinic.
+                </p>
+            </div>
+
+            <button type="submit" class="appointment-submit-btn">
+                Request Appointment <span>→</span>
+            </button>
+
+            <p class="appointment-privacy">
+                Please avoid including sensitive medical information in this form.
+            </p>
+        </form>
+    </div>
+
+</section>
+
+<section class="appointment-bottom">
+    <h2>Have Questions Before Booking?</h2>
+    <p>Our team is happy to help with general inquiries.</p>
+    <a href="{% url 'contact' %}">Contact Our Clinic →</a>
+</section>
+
+{% endblock %}

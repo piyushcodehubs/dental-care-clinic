@@ -1,0 +1,361 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Dental Services | DentalCare{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Services Hero -->
+<section class="services-hero">
+    <div class="services-hero-content">
+        <span class="services-subtitle">OUR DENTAL SERVICES</span>
+
+        <h1>Complete Dental Care for Your Perfect Smile</h1>
+
+        <p>
+            From routine checkups to advanced dental treatments,
+            we provide personalized care to help you maintain
+            healthy teeth and a confident smile.
+        </p>
+
+        <div class="services-hero-buttons">
+            <a href="{% url 'appointment' %}" class="services-btn services-btn-primary">
+                Book an Appointment →
+            </a>
+
+            <a href="#all-services" class="services-btn services-btn-outline">
+                Explore Services
+            </a>
+        </div>
+    </div>
+
+    <div class="services-hero-image">
+        <img
+            src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1000&q=85"
+            alt="Dentist providing dental care">
+
+        <div class="services-floating-card">
+            <span class="services-floating-icon">🦷</span>
+            <div>
+                <h3>Your Smile, Our Priority</h3>
+                <p>Personalized dental care</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Services Introduction -->
+<section class="services-intro" id="all-services">
+    <div class="services-section-heading">
+        <span class="services-subtitle">WHAT WE OFFER</span>
+
+        <h2>Explore Our Dental Treatments</h2>
+
+        <p>
+            Discover dental services designed to support your oral health,
+            improve your smile, and help you feel confident about your care.
+        </p>
+    </div>
+
+    <div class="services-grid">
+
+        <!-- Service 1 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=700&q=85"
+                    alt="General dental examination">
+                <span class="service-number">01</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">🦷</div>
+
+                <h3>General Dentistry</h3>
+
+                <p>
+                    Maintain healthy teeth and gums with routine examinations,
+                    preventive care, and personalized oral health guidance.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 2 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=700&q=85"
+                    alt="Professional teeth cleaning">
+                <span class="service-number">02</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">✨</div>
+
+                <h3>Teeth Cleaning</h3>
+
+                <p>
+                    Professional cleaning helps remove plaque and tartar
+                    buildup and supports healthier teeth and gums.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 3 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=700&q=85"
+                    alt="Cosmetic dental treatment">
+                <span class="service-number">03</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">😁</div>
+
+                <h3>Cosmetic Dentistry</h3>
+
+                <p>
+                    Explore suitable cosmetic options to improve the
+                    appearance of your teeth and create a smile
+                    you feel confident sharing.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 4 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=700&q=85"
+                    alt="Dental braces and orthodontic care">
+                <span class="service-number">04</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">🪥</div>
+
+                <h3>Braces & Alignment</h3>
+
+                <p>
+                    Learn about orthodontic treatments that can help
+                    improve tooth alignment and address certain bite issues.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 5 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=700&q=85"
+                    alt="Modern dental treatment room">
+                <span class="service-number">05</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">🩺</div>
+
+                <h3>Root Canal Treatment</h3>
+
+                <p>
+                    Treatment for certain infected or damaged teeth may
+                    help relieve symptoms and preserve the natural tooth.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 6 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=700&q=85"
+                    alt="Dental professional examining a patient">
+                <span class="service-number">06</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">👨‍👩‍👧</div>
+
+                <h3>Children's Dentistry</h3>
+
+                <p>
+                    Help children develop healthy dental habits with
+                    age-appropriate examinations, preventive care,
+                    and oral hygiene education.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 7 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=700&q=85"
+                    alt="Dental implant consultation">
+                <span class="service-number">07</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">🦷</div>
+
+                <h3>Dental Implants</h3>
+
+                <p>
+                    Discover tooth replacement options and find out
+                    whether dental implants may be appropriate
+                    for your individual needs.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+
+        <!-- Service 8 -->
+        <article class="service-card">
+            <div class="service-image">
+                <img
+                    src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=700&q=85"
+                    alt="Dental examination and consultation">
+                <span class="service-number">08</span>
+            </div>
+
+            <div class="service-card-content">
+                <div class="service-icon">💙</div>
+
+                <h3>Dental Consultation</h3>
+
+                <p>
+                    Discuss your concerns, understand possible treatment
+                    options, and receive guidance on your next steps
+                    for oral health.
+                </p>
+
+                <a href="{% url 'appointment' %}" class="service-link">
+                    Book a Visit <span>→</span>
+                </a>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+
+<!-- Why Choose Our Clinic -->
+<section class="services-benefits">
+    <div class="services-section-heading">
+        <span class="services-subtitle">WHY CHOOSE US</span>
+
+        <h2>Care That Puts You First</h2>
+
+        <p>
+            We aim to make every dental visit comfortable,
+            informative, and focused on your individual needs.
+        </p>
+    </div>
+
+    <div class="services-benefits-grid">
+
+        <div class="services-benefit-card">
+            <div class="services-benefit-icon">👨‍⚕️</div>
+            <h3>Professional Care</h3>
+            <p>
+                Receive personalized guidance from qualified
+                dental professionals.
+            </p>
+        </div>
+
+        <div class="services-benefit-card">
+            <div class="services-benefit-icon">🔬</div>
+            <h3>Modern Equipment</h3>
+            <p>
+                We aim to use appropriate equipment and techniques
+                to support quality dental care.
+            </p>
+        </div>
+
+        <div class="services-benefit-card">
+            <div class="services-benefit-icon">💚</div>
+            <h3>Patient Comfort</h3>
+            <p>
+                We listen to your concerns and explain your treatment
+                options clearly.
+            </p>
+        </div>
+
+        <div class="services-benefit-card">
+            <div class="services-benefit-icon">📅</div>
+            <h3>Easy Appointment Requests</h3>
+            <p>
+                Send us your preferred appointment details
+                through our online request form.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Appointment Call To Action -->
+<section class="services-cta">
+    <div class="services-cta-content">
+        <span class="services-subtitle">TAKE THE FIRST STEP</span>
+
+        <h2>Your Healthier Smile Starts Here</h2>
+
+        <p>
+            Ready to discuss your dental care needs?
+            Request an appointment with our clinic today.
+        </p>
+
+        <div class="services-cta-buttons">
+            <a href="{% url 'appointment' %}" class="services-btn services-btn-white">
+                Book an Appointment →
+            </a>
+
+            <a href="{% url 'contact' %}" class="services-btn services-btn-transparent">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
