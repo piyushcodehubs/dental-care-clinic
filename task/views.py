@@ -116,3 +116,56 @@ def appointment_success_view(request, tracking_code):
         "appointment_success.html",
         {"appointment": appointment},
     )
+
+
+
+
+
+
+from django.contrib import messages
+from django.contrib.admin.views.decorators import staff_member_required
+from django.core.mail import send_mail
+from django.conf import settings
+from django.shortcuts import render, redirect
+
+from .forms import ClientEmailForm
+
+
+@staff_member_required
+def send_client_email(request):
+    if request.method == "POST":
+        form = ClientEmailForm(request.POST)
+
+        if form.is_valid():
+            appointment = form.cleaned_data["appointment"]
+            subject = form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
+
+            try:
+                send_mail(
+                    subject=subject,
+                    message=message,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[appointment.email],
+                    fail_silently=False,
+                )
+
+                messages.success(
+                    request,
+                    f"Email sent to {appointment.email}.",
+                )
+                return redirect("send_client_email")
+
+            except Exception:
+                messages.error(
+                    request,
+                    "Email could not be sent. Check your email settings.",
+                )
+    else:
+        form = ClientEmailForm()
+
+    return render(
+        request,
+        "send_client_email.html",
+        {"form": form},
+    )

@@ -1,4 +1,3 @@
-
 from django import forms
 from django.utils import timezone
 
@@ -68,3 +67,30 @@ class ContactMessageForm(forms.Form):
             subject=data["subject"],
             message=data["message"],
         )
+
+
+
+
+from django import forms
+from .models import Appointment
+
+
+class ClientEmailForm(forms.Form):
+    appointment = forms.ModelChoiceField(
+        queryset=Appointment.objects.all(),
+        label="Select patient appointment",
+    )
+
+    subject = forms.CharField(
+        max_length=200,
+        label="Email subject",
+    )
+
+    message = forms.CharField(
+        widget=forms.Textarea(attrs={
+            "rows": 8,
+            "placeholder": "Write your message to the patient...",
+        }),
+        max_length=10000,
+        label="Your message",
+    )

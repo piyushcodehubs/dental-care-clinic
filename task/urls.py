@@ -27,4 +27,11 @@ urlpatterns = [
         views.appointment_success_view,
         name="appointment_success",
     ),
+
+
+    path(
+    "send-client-email/",
+    views.send_client_email,
+    name="send_client_email",
+    ),
 ]
