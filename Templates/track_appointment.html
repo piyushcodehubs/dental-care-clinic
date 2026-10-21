@@ -1,0 +1,45 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Track Appointment | DentalCare{% endblock %}
+
+{% block content %}
+<section class="track-appointment">
+    <h1>Track Your Appointment</h1>
+    <p>
+        Enter the unique tracking code you received when
+        you submitted your appointment request.
+    </p>
+
+    <form method="POST" action="{% url 'track_appointment' %}">
+        {% csrf_token %}
+
+        <label for="tracking-code">Appointment Tracking Code</label>
+        <input
+            type="text"
+            id="tracking-code"
+            name="tracking_code"
+            placeholder="Example: DC-A8K2M9P4Q7"
+            maxlength="15"
+            required
+        >
+
+        <button type="submit">Search Appointment</button>
+    </form>
+
+    {% if error %}
+        <p class="form-error">{{ error }}</p>
+    {% endif %}
+
+    {% if appointment %}
+        <div class="appointment-result">
+            <h2>Appointment Request Found</h2>
+            <p><strong>Tracking Code:</strong> {{ appointment.tracking_code }}</p>
+            <p><strong>Service:</strong> {{ appointment.get_dental_service_display }}</p>
+            <p><strong>Preferred Date:</strong> {{ appointment.preferred_date }}</p>
+            <p><strong>Preferred Time:</strong> {{ appointment.get_preferred_time_display }}</p>
+            <p><strong>Status:</strong> {{ appointment.get_status_display }}</p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

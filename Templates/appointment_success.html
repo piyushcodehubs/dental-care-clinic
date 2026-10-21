@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Appointment Request Submitted | DentalCare{% endblock %}
+
+{% block content %}
+<section class="appointment-success">
+    <h1>Appointment Request Submitted!</h1>
+
+    <p>
+        Thank you for choosing DentalCare.
+        Your request has been received and is awaiting confirmation.
+    </p>
+
+    <h2>Your Tracking Code</h2>
+
+    <p class="tracking-code">
+        {{ appointment.tracking_code }}
+    </p>
+
+    <p>
+        Please save this code. You can use it to check
+        your appointment request status later.
+    </p>
+
+    <a href="{% url 'track_appointment' %}">
+        Track Your Appointment
+    </a>
+</section>
+{% endblock %}
