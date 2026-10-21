@@ -4,6 +4,8 @@ from django.contrib import messages
 
 from .forms import AppointmentForm, ContactMessageForm
 from .models import Appointment
+from .email_utils import send_appointment_confirmation
+
 
 
 def home(request):
@@ -24,6 +26,7 @@ def appointment_view(request):
 
         if form.is_valid():
             appointment = form.save()
+            send_appointment_confirmation(appointment)
 
             return redirect(
                 "appointment_success",

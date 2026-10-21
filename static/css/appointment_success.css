@@ -1,0 +1,265 @@
+/* =====================================
+  DENTALCARE - APPOINTMENT SUCCESS PAGE
+===================================== */
+
+.appointment-success-section {
+    min-height: 70vh;
+    padding: 80px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f9fc;
+    font-family: inherit;
+}
+
+.appointment-success-container {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.appointment-success-card {
+    padding: 48px 42px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #e1ebf0;
+    border-radius: 22px;
+    box-shadow: 0 18px 50px rgba(22, 53, 74, 0.09);
+}
+
+/* Success icon */
+
+.success-icon-wrapper {
+    width: 82px;
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: #168c91;
+    background: #e4f7f3;
+    border: 1px solid #c8eee5;
+    border-radius: 50%;
+}
+
+.success-icon {
+    width: 42px;
+    height: 42px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Heading */
+
+.success-eyebrow {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #168c91;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.appointment-success-card h1 {
+    margin: 0 0 16px;
+    color: #16354a;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.success-description {
+    max-width: 520px;
+    margin: 0 auto 28px;
+    color: #637786;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+/* Pending notice */
+
+.success-pending-notice {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+    padding: 16px 18px;
+    text-align: left;
+    background: #fff8e8;
+    border: 1px solid #f2e2b7;
+    border-radius: 12px;
+}
+
+.success-notice-icon {
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+.success-pending-notice p {
+    margin: 0;
+    color: #795c24;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Tracking code */
+
+.success-code-box {
+    margin-bottom: 28px;
+    padding: 23px 18px;
+    background: #f1f9fb;
+    border: 1px dashed #9fc9d2;
+    border-radius: 14px;
+}
+
+.success-code-label {
+    display: block;
+    margin-bottom: 12px;
+    color: #637786;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.success-tracking-code {
+    display: block;
+    margin-bottom: 16px;
+    color: #168c91;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 800;
+    letter-spacing: 2px;
+    overflow-wrap: anywhere;
+    user-select: all;
+}
+
+.success-code-hint {
+    margin: 0;
+    color: #71818d;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Buttons */
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-bottom: 28px;
+}
+
+.success-btn {
+    min-height: 49px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 23px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.success-btn:hover {
+    transform: translateY(-2px);
+}
+
+.success-btn-primary {
+    color: #ffffff;
+    background: #168c91;
+}
+
+.success-btn-primary:hover {
+    color: #ffffff;
+    background: #117479;
+}
+
+.success-btn-secondary {
+    color: #244657;
+    background: #ffffff;
+    border-color: #d5e3e9;
+}
+
+.success-btn-secondary:hover {
+    color: #168c91;
+    background: #f4f9fc;
+    border-color: #168c91;
+}
+
+.success-btn:focus-visible {
+    outline: 3px solid #8bd4d6;
+    outline-offset: 3px;
+}
+
+/* Footer */
+
+.success-footer {
+    padding-top: 22px;
+    border-top: 1px solid #edf1f4;
+}
+
+.success-footer p {
+    margin: 0;
+    color: #71818d;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.success-footer a {
+    color: #168c91;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.success-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .appointment-success-section {
+        min-height: auto;
+        padding: 45px 15px;
+    }
+
+    .appointment-success-card {
+        padding: 32px 20px;
+        border-radius: 16px;
+    }
+
+    .success-icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+
+    .success-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .success-actions {
+        flex-direction: column;
+    }
+
+    .success-btn {
+        width: 100%;
+    }
+
+    .success-code-box {
+        padding: 20px 12px;
+    }
+}

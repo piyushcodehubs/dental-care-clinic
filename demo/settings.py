@@ -120,3 +120,10 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS =[
     BASE_DIR /'static',
 ]
+
+
+
+# Email configuration for development
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+DEFAULT_FROM_EMAIL = "DentalCare <noreply@example.com>"

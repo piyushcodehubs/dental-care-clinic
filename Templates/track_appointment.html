@@ -1,45 +1,136 @@
-
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Track Appointment | DentalCare{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/track_appointment.css' %}">
+{% endblock %}
+
 {% block content %}
+
 <section class="track-appointment">
-    <h1>Track Your Appointment</h1>
-    <p>
-        Enter the unique tracking code you received when
-        you submitted your appointment request.
-    </p>
+    <div class="track-appointment-container">
 
-    <form method="POST" action="{% url 'track_appointment' %}">
-        {% csrf_token %}
-
-        <label for="tracking-code">Appointment Tracking Code</label>
-        <input
-            type="text"
-            id="tracking-code"
-            name="tracking_code"
-            placeholder="Example: DC-A8K2M9P4Q7"
-            maxlength="15"
-            required
-        >
-
-        <button type="submit">Search Appointment</button>
-    </form>
-
-    {% if error %}
-        <p class="form-error">{{ error }}</p>
-    {% endif %}
-
-    {% if appointment %}
-        <div class="appointment-result">
-            <h2>Appointment Request Found</h2>
-            <p><strong>Tracking Code:</strong> {{ appointment.tracking_code }}</p>
-            <p><strong>Service:</strong> {{ appointment.get_dental_service_display }}</p>
-            <p><strong>Preferred Date:</strong> {{ appointment.preferred_date }}</p>
-            <p><strong>Preferred Time:</strong> {{ appointment.get_preferred_time_display }}</p>
-            <p><strong>Status:</strong> {{ appointment.get_status_display }}</p>
+        <div class="track-header">
+            <span class="track-subtitle">DENTALCARE APPOINTMENTS</span>
+            <h1>Track Your Appointment</h1>
+            <p>
+                Check the status of your appointment request.
+                Enter the unique tracking code you received after submitting
+                your appointment form.
+            </p>
         </div>
-    {% endif %}
+
+        <div class="track-search-card">
+            <h2>Find Your Appointment</h2>
+            <p>
+                Enter your tracking code below to view your request status.
+            </p>
+
+            <form
+                method="POST"
+                action="{% url 'track_appointment' %}"
+                class="track-form"
+            >
+                {% csrf_token %}
+
+                <label for="tracking-code">
+                    Appointment Tracking Code
+                </label>
+
+                <div class="track-input-group">
+                    <input
+                        type="text"
+                        id="tracking-code"
+                        name="tracking_code"
+                        placeholder="e.g. DC-A8K2M9P4Q7"
+                        maxlength="15"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <button type="submit" class="track-search-btn">
+                        Search Appointment →
+                    </button>
+                </div>
+            </form>
+
+            {% if error %}
+                <div class="track-error" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+
+        {% if appointment %}
+            <div class="track-result">
+
+                <div class="track-result-header">
+                    <h2>Appointment Request Found</h2>
+                    <p>Here are the details of your request.</p>
+                </div>
+
+                <div class="track-result-body">
+
+                    <div class="track-result-code">
+                        <span>Your Tracking Code</span>
+                        <strong>{{ appointment.tracking_code }}</strong>
+                    </div>
+
+                    <div class="track-result-grid">
+
+                        <div class="track-detail">
+                            <span>Dental Service</span>
+                            <strong>
+                                {{ appointment.get_dental_service_display }}
+                            </strong>
+                        </div>
+
+                        <div class="track-detail">
+                            <span>Preferred Date</span>
+                            <strong>{{ appointment.preferred_date|date:"M d, Y" }}</strong>
+                        </div>
+
+                        <div class="track-detail">
+                            <span>Preferred Time</span>
+                            <strong>
+                                {{ appointment.get_preferred_time_display }}
+                            </strong>
+                        </div>    
+                <div class="track-detail">
+                    <span>Request Status</span>
+                    <strong>
+                        {% if appointment.status == "pending" %}
+                            <span class="track-status track-status-pending">
+                                {{ appointment.get_status_display }}
+                            </span>
+                        {% elif appointment.status == "confirmed" %}
+                            <span class="track-status track-status-confirmed">
+                                {{ appointment.get_status_display }}
+                            </span>
+                        {% elif appointment.status == "cancelled" %}
+                            <span class="track-status track-status-cancelled">
+                                {{ appointment.get_status_display }}
+                            </span>
+                        {% endif %}
+                    </strong>
+                </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="track-help">
+            <p>
+                Need help with your appointment?
+                <a href="{% url 'contact' %}">Contact our clinic</a>.
+            </p>
+        </div>
+
+    </div>
 </section>
+
 {% endblock %}

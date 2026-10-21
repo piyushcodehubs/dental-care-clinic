@@ -1,30 +1,95 @@
 
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Appointment Request Submitted | DentalCare{% endblock %}
+{% block title %}Appointment Request Successful | DentalCare{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/appointment_success.css' %}">
+{% endblock %}
 
 {% block content %}
-<section class="appointment-success">
-    <h1>Appointment Request Submitted!</h1>
 
-    <p>
-        Thank you for choosing DentalCare.
-        Your request has been received and is awaiting confirmation.
-    </p>
+<section class="appointment-success-section">
+    <div class="appointment-success-container">
 
-    <h2>Your Tracking Code</h2>
+        <div class="appointment-success-card">
 
-    <p class="tracking-code">
-        {{ appointment.tracking_code }}
-    </p>
+            <div class="success-icon-wrapper">
+                <svg
+                    class="success-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M5 12.5l4.5 4.5L19 7"></path>
+                </svg>
+            </div>
 
-    <p>
-        Please save this code. You can use it to check
-        your appointment request status later.
-    </p>
+            <span class="success-eyebrow">
+                DENTALCARE · APPOINTMENT REQUEST
+            </span>
 
-    <a href="{% url 'track_appointment' %}">
-        Track Your Appointment
-    </a>
+            <h1>Thank You!</h1>
+
+            <p class="success-description">
+                Your appointment request has been submitted successfully.
+                We appreciate you choosing DentalCare and look forward
+                to helping you care for your smile.
+            </p>
+
+            <div class="success-pending-notice">
+                <span class="success-notice-icon" aria-hidden="true">ℹ️</span>
+                <p>
+                    <strong>Your appointment is pending confirmation.</strong>
+                    Our clinic will review your request and contact you
+                    to confirm your appointment. Your preferred date and
+                    time are not yet guaranteed.
+                </p>
+            </div>
+
+            <div class="success-code-box">
+                <span class="success-code-label">
+                    Your Appointment Tracking Code
+                </span>
+
+                <strong class="success-tracking-code">
+                    {{ appointment.tracking_code }}
+                </strong>
+
+                <p class="success-code-hint">
+                    Save this code somewhere safe. You can use it to
+                    look up your appointment request later.
+                </p>
+            </div>
+
+            <div class="success-actions">
+                <a
+                    href="{% url 'track_appointment' %}"
+                    class="success-btn success-btn-primary"
+                >
+                    Track Appointment →
+                </a>
+
+                <a
+                    href="{% url 'home' %}"
+                    class="success-btn success-btn-secondary"
+                >
+                    Back to Home
+                </a>
+            </div>
+
+            <div class="success-footer">
+                <p>
+                    Have questions?
+                    <a href="{% url 'contact' %}">
+                        Contact our clinic
+                    </a>.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
 </section>
+
 {% endblock %}

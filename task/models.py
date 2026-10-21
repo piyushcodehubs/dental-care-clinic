@@ -1,36 +1,33 @@
-from django.db import models
 
+from django.db import models, IntegrityError, transaction
 import secrets
-import string
-
 
 
 class Appointment(models.Model):
-    
+
     SERVICE_CHOICES = [
-    ("general", "General Dentistry"),
-    ("checkup", "Dental Checkup"),
-    ("whitening", "Teeth Whitening"),
-    ("braces", "Braces and Alignment"),
-    ("root_canal", "Root Canal Treatment"),
-    ("children", "Children's Dentistry"),
-    ("implants", "Dental Implants"),
-    ("other", "Other"),
+        ("general", "General Dentistry"),
+        ("checkup", "Dental Checkup"),
+        ("whitening", "Teeth Whitening"),
+        ("braces", "Braces and Alignment"),
+        ("root_canal", "Root Canal Treatment"),
+        ("children", "Children's Dentistry"),
+        ("implants", "Dental Implants"),
+        ("other", "Other"),
     ]
 
     TIME_CHOICES = [
-    ("09:00", "9:00 AM"),
-    ("10:00", "10:00 AM"),
-    ("11:00", "11:00 AM"),
-    ("12:00", "12:00 PM"),
-    ("13:00", "1:00 PM"),
-    ("14:00", "2:00 PM"),
-    ("15:00", "3:00 PM"),
-    ("16:00", "4:00 PM"),
-    ("17:00", "5:00 PM"),
-    ("18:00", "6:00 PM"),
+        ("09:00", "9:00 AM"),
+        ("10:00", "10:00 AM"),
+        ("11:00", "11:00 AM"),
+        ("12:00", "12:00 PM"),
+        ("13:00", "1:00 PM"),
+        ("14:00", "2:00 PM"),
+        ("15:00", "3:00 PM"),
+        ("16:00", "4:00 PM"),
+        ("17:00", "5:00 PM"),
+        ("18:00", "6:00 PM"),
     ]
-
 
     STATUS_CHOICES = [
         ("pending", "Pending"),
@@ -48,6 +45,7 @@ class Appointment(models.Model):
     )
 
     preferred_date = models.DateField()
+
     preferred_time = models.CharField(
         max_length=5,
         choices=TIME_CHOICES,
@@ -66,43 +64,44 @@ class Appointment(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    tracking_code = models.CharField(
+        max_length=15,
+        unique=True,
+        blank=True,
+        editable=False,
+    )
+
     class Meta:
         ordering = ["-created_at"]
 
     def __str__(self):
         return f"{self.full_name} - {self.preferred_date}"
 
-    
-    tracking_code = models.CharField(
-    max_length=15,
-    unique=True,
-    blank=True,
-    editable=False,
-    db_index=True,
-)
-
-
     def save(self, *args, **kwargs):
-      if not self.tracking_code:
-        alphabet = string.ascii_uppercase + string.digits
+        # Generate a tracking code for new appointments
+        if not self.tracking_code:
+            for _ in range(5):
+                self.tracking_code = (
+                    "DC-" + secrets.token_hex(6).upper()
+                )
 
-        while True:
-            code = "DC-" + "".join(
-                secrets.choice(alphabet) for _ in range(10)
+                try:
+                    with transaction.atomic():
+                        return super().save(*args, **kwargs)
+
+                except IntegrityError:
+                    # Retry if the tracking code already exists
+                    self.tracking_code = ""
+
+            raise RuntimeError(
+                "Could not generate a unique appointment tracking code."
             )
 
-            if not Appointment.objects.filter(
-                tracking_code=code
-            ).exists():
-                self.tracking_code = code
-                break
-
-        super().save(*args, **kwargs)
-
-
+        return super().save(*args, **kwargs)
 
 
 class ContactMessage(models.Model):
+
     full_name = models.CharField(max_length=150)
     email = models.EmailField()
     subject = models.CharField(max_length=200)

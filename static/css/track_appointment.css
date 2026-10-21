@@ -1,0 +1,317 @@
+
+/* ========================================
+  DENTALCARE - TRACK APPOINTMENT
+======================================== */
+
+.track-appointment {
+    min-height: 65vh;
+    padding: 80px 20px;
+    background: #f4f9fc;
+    font-family: inherit;
+}
+
+.track-appointment-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* Header */
+
+.track-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.track-subtitle {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #168c91;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.track-header h1 {
+    margin: 0 0 15px;
+    color: #16354a;
+    font-size: clamp(30px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.track-header p {
+    max-width: 560px;
+    margin: 0 auto;
+    color: #637786;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* Search card */
+
+.track-search-card {
+    padding: 35px;
+    background: #ffffff;
+    border: 1px solid #e1ebf0;
+    border-radius: 18px;
+    box-shadow: 0 15px 45px rgba(22, 53, 74, 0.08);
+}
+
+.track-search-card h2 {
+    margin: 0 0 10px;
+    color: #16354a;
+    font-size: 23px;
+}
+
+.track-search-card > p {
+    margin: 0 0 25px;
+    color: #71818d;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Form */
+
+.track-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.track-form label {
+    color: #294454;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.track-input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.track-form input {
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0 16px;
+    color: #16354a;
+    background: #ffffff;
+    border: 1px solid #d6e2e9;
+    border-radius: 9px;
+    outline: none;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.track-form input::placeholder {
+    color: #9aaab4;
+}
+
+.track-form input:focus {
+    border-color: #168c91;
+    box-shadow: 0 0 0 3px rgba(22, 140, 145, 0.12);
+}
+
+.track-search-btn {
+    min-height: 52px;
+    padding: 0 24px;
+    color: #ffffff;
+    background: #168c91;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.track-search-btn:hover {
+    background: #117479;
+    transform: translateY(-1px);
+}
+
+.track-search-btn:focus-visible {
+    outline: 3px solid #8bd4d6;
+    outline-offset: 3px;
+}
+
+/* Error message */
+
+.track-error {
+    margin-top: 20px;
+    padding: 14px 16px;
+    color: #a52b35;
+    background: #fff0f1;
+    border: 1px solid #f4c9cd;
+    border-radius: 9px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Appointment result */
+
+.track-result {
+    margin-top: 28px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #dce8ee;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(22, 53, 74, 0.06);
+}
+
+.track-result-header {
+    padding: 24px 28px;
+    background: #eaf7f7;
+    border-bottom: 1px solid #d8eeee;
+}
+
+.track-result-header h2 {
+    margin: 0 0 7px;
+    color: #16354a;
+    font-size: 22px;
+}
+
+.track-result-header p {
+    margin: 0;
+    color: #56717d;
+    font-size: 14px;
+}
+
+.track-result-body {
+    padding: 26px 28px;
+}
+
+.track-result-code {
+    margin-bottom: 22px;
+    padding: 15px;
+    text-align: center;
+    background: #f4f9fc;
+    border: 1px dashed #a8c9d3;
+    border-radius: 10px;
+}
+
+.track-result-code span {
+    display: block;
+    margin-bottom: 8px;
+    color: #71818d;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.track-result-code strong {
+    color: #168c91;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    overflow-wrap: anywhere;
+}
+
+.track-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.track-detail {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #edf1f4;
+}
+
+.track-detail span {
+    display: block;
+    margin-bottom: 7px;
+    color: #71818d;
+    font-size: 13px;
+}
+
+.track-detail strong {
+    color: #294454;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+/* Status badge */
+
+.track-status {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.track-status-pending {
+    color: #875b08;
+    background: #fff3cd;
+}
+
+.track-status-confirmed {
+    color: #176b43;
+    background: #dff5e8;
+}
+
+.track-status-cancelled {
+    color: #a52b35;
+    background: #ffe4e6;
+}
+
+/* Footer note */
+
+.track-help {
+    margin-top: 25px;
+    color: #71818d;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.track-help a {
+    color: #168c91;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.track-help a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .track-appointment {
+        padding: 50px 16px;
+    }
+
+    .track-search-card {
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
+
+    .track-input-group {
+        flex-direction: column;
+    }
+
+    .track-search-btn {
+        width: 100%;
+    }
+
+    .track-result-header,
+    .track-result-body {
+        padding: 21px 18px;
+    }
+
+    .track-result-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .track-result-code strong {
+        font-size: 18px;
+    }
+}
