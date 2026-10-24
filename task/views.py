@@ -20,13 +20,20 @@ def services(request):
     return render(request, "services.html")
 
 
+
+
 def appointment_view(request):
     if request.method == "POST":
         form = AppointmentForm(request.POST)
 
         if form.is_valid():
             appointment = form.save()
-            send_appointment_confirmation(appointment)
+
+            Thread(
+                target=send_email_in_background,
+                args=(appointment.id,),
+                daemon=True,
+            ).start()
 
             return redirect(
                 "appointment_success",
@@ -45,6 +52,8 @@ def appointment_view(request):
         "appointment.html",
         {"form": form},
     )
+
+
 
 
 def contact_view(request):
@@ -169,3 +178,19 @@ def send_client_email(request):
         "send_client_email.html",
         {"form": form},
     )
+
+
+
+from threading import Thread
+from django.contrib import messages
+from .email_utils import send_appointment_confirmation
+
+
+def send_email_in_background(appointment_id):
+    from .models import Appointment
+
+    try:
+        appointment = Appointment.objects.get(id=appointment_id)
+        send_appointment_confirmation(appointment)
+    except Exception as e:
+        print(f"EMAIL ERROR: {e}")

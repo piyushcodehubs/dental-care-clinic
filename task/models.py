@@ -63,7 +63,6 @@ class Appointment(models.Model):
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
-
     tracking_code = models.CharField(
         max_length=15,
         unique=True,
