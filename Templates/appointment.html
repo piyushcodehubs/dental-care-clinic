@@ -1,8 +1,11 @@
+
 {% extends 'base.html' %}
 {% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
 {% endblock %}
+
 {% block title %}Book Appointment | DentalCare{% endblock %}
 
 {% block content %}
@@ -21,7 +24,6 @@
 
 <section class="appointment-main">
 
-    <!-- Booking Information -->
     <div class="appointment-sidebar">
         <span class="appointment-subtitle">YOUR VISIT</span>
         <h2>Let's Make Your Smile a Priority</h2>
@@ -65,27 +67,33 @@
         </div>
     </div>
 
-    <!-- Appointment Form -->
     <div class="appointment-form-panel">
         <span class="appointment-subtitle">APPOINTMENT REQUEST</span>
         <h2>Patient Information</h2>
+
         <p class="appointment-form-description">
             Fields marked with * are required.
         </p>
 
         {% if messages %}
             {% for message in messages %}
-                <div class="appointment-alert">
+                <div class="appointment-alert" role="status">
                     {{ message }}
                 </div>
             {% endfor %}
         {% endif %}
 
-        <form method="POST" action="{% url 'appointment' %}">
+        <form
+            method="POST"
+            action="{% url 'appointment' %}"
+            id="appointment-form"
+            novalidate
+        >
             {% csrf_token %}
 
             <div class="appointment-form-grid">
 
+                <!-- Full Name -->
                 <div class="appointment-field">
                     <label for="patient-name">Full Name *</label>
                     <input
@@ -94,20 +102,36 @@
                         name="name"
                         placeholder="Enter your full name"
                         autocomplete="name"
-                        required>
+                        maxlength="100"
+                        value="{{ request.POST.name|default:'' }}"
+                        required
+                    >
+                    <small id="name-error" class="validation-error"></small>
                 </div>
 
+                <!-- Phone -->
                 <div class="appointment-field">
                     <label for="patient-phone">Phone Number *</label>
                     <input
                         type="tel"
                         id="patient-phone"
                         name="phone"
-                        placeholder="Enter your phone number"
+                        placeholder="9876543210"
                         autocomplete="tel"
-                        required>
+                        maxlength="16"
+                        value="{{ request.POST.phone|default:'' }}"
+                        aria-describedby="phone-error"
+                        required
+                    >
+
+                    <small
+                        id="phone-error"
+                        class="validation-error"
+                        aria-live="polite"
+                    >{% if form.phone.errors %}{{ form.phone.errors.0 }}{% endif %}</small>
                 </div>
 
+                <!-- Email -->
                 <div class="appointment-field">
                     <label for="patient-email">Email Address *</label>
                     <input
@@ -116,51 +140,66 @@
                         name="email"
                         placeholder="Enter your email"
                         autocomplete="email"
-                        required>
+                        maxlength="254"
+                        value="{{ request.POST.email|default:'' }}"
+                        aria-describedby="email-error"
+                        required
+                    >
+
+                    <small
+                        id="email-error"
+                        class="validation-error"
+                        aria-live="polite"
+                    >{% if form.email.errors %}{{ form.email.errors.0 }}{% endif %}</small>
                 </div>
 
+                <!-- Dental Service -->
                 <div class="appointment-field">
                     <label for="patient-service">Dental Service *</label>
                     <select id="patient-service" name="service" required>
                         <option value="">Select a service</option>
-                        <option value="general">General Dentistry</option>
-                        <option value="checkup">Dental Checkup</option>
-                        <option value="whitening">Teeth Whitening</option>
-                        <option value="braces">Braces &amp; Alignment</option>
-                        <option value="root_canal">Root Canal Treatment</option>
-                        <option value="children">Children's Dentistry</option>
-                        <option value="implants">Dental Implants</option>
-                        <option value="other">Other</option>
+                        <option value="general" {% if request.POST.service == 'general' %}selected{% endif %}>General Dentistry</option>
+                        <option value="checkup" {% if request.POST.service == 'checkup' %}selected{% endif %}>Dental Checkup</option>
+                        <option value="whitening" {% if request.POST.service == 'whitening' %}selected{% endif %}>Teeth Whitening</option>
+                        <option value="braces" {% if request.POST.service == 'braces' %}selected{% endif %}>Braces &amp; Alignment</option>
+                        <option value="root_canal" {% if request.POST.service == 'root_canal' %}selected{% endif %}>Root Canal Treatment</option>
+                        <option value="children" {% if request.POST.service == 'children' %}selected{% endif %}>Children's Dentistry</option>
+                        <option value="implants" {% if request.POST.service == 'implants' %}selected{% endif %}>Dental Implants</option>
+                        <option value="other" {% if request.POST.service == 'other' %}selected{% endif %}>Other</option>
                     </select>
-
                 </div>
 
+                <!-- Date -->
                 <div class="appointment-field">
                     <label for="appointment-date">Preferred Date *</label>
                     <input
                         type="date"
                         id="appointment-date"
                         name="date"
-                        required>
+                        value="{{ request.POST.date|default:'' }}"
+                        required
+                    >
                 </div>
 
+                <!-- Time -->
                 <div class="appointment-field">
                     <label for="appointment-time">Preferred Time *</label>
                     <select id="appointment-time" name="time" required>
                         <option value="">Select a time</option>
-                        <option value="09:00">9:00 AM</option>
-                        <option value="10:00">10:00 AM</option>
-                        <option value="11:00">11:00 AM</option>
-                        <option value="12:00">12:00 PM</option>
-                        <option value="13:00">1:00 PM</option>
-                        <option value="14:00">2:00 PM</option>
-                        <option value="15:00">3:00 PM</option>
-                        <option value="16:00">4:00 PM</option>
-                        <option value="17:00">5:00 PM</option>
-                        <option value="18:00">6:00 PM</option>
+                        <option value="09:00" {% if request.POST.time == '09:00' %}selected{% endif %}>9:00 AM</option>
+                        <option value="10:00" {% if request.POST.time == '10:00' %}selected{% endif %}>10:00 AM</option>
+                        <option value="11:00" {% if request.POST.time == '11:00' %}selected{% endif %}>11:00 AM</option>
+                        <option value="12:00" {% if request.POST.time == '12:00' %}selected{% endif %}>12:00 PM</option>
+                        <option value="13:00" {% if request.POST.time == '13:00' %}selected{% endif %}>1:00 PM</option>
+                        <option value="14:00" {% if request.POST.time == '14:00' %}selected{% endif %}>2:00 PM</option>
+                        <option value="15:00" {% if request.POST.time == '15:00' %}selected{% endif %}>3:00 PM</option>
+                        <option value="16:00" {% if request.POST.time == '16:00' %}selected{% endif %}>4:00 PM</option>
+                        <option value="17:00" {% if request.POST.time == '17:00' %}selected{% endif %}>5:00 PM</option>
+                        <option value="18:00" {% if request.POST.time == '18:00' %}selected{% endif %}>6:00 PM</option>
                     </select>
                 </div>
 
+                <!-- Additional Information -->
                 <div class="appointment-field appointment-field-full">
                     <label for="appointment-message">
                         Additional Information
@@ -169,7 +208,9 @@
                         id="appointment-message"
                         name="message"
                         rows="4"
-                        placeholder="Tell us anything you'd like us to know (optional)"></textarea>
+                        maxlength="2000"
+                        placeholder="Tell us anything you'd like us to know (optional)"
+                    >{{ request.POST.message|default:'' }}</textarea>
                 </div>
 
             </div>
@@ -182,16 +223,27 @@
                 </p>
             </div>
 
-            <button type="submit" class="appointment-submit-btn">
+            <p
+                id="form-error"
+                class="validation-error form-validation-error"
+                role="alert"
+                aria-live="assertive"
+            ></p>
+
+            <button
+                type="submit"
+                class="appointment-submit-btn"
+                id="appointment-submit-btn"
+            >
                 Request Appointment <span>→</span>
             </button>
 
             <p class="appointment-privacy">
                 Please avoid including sensitive medical information in this form.
             </p>
+
         </form>
     </div>
-
 </section>
 
 <section class="appointment-bottom">
@@ -200,4 +252,8 @@
     <a href="{% url 'contact' %}">Contact Our Clinic →</a>
 </section>
 
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/appointment-validation.js' %}" defer></script>
 {% endblock %}
