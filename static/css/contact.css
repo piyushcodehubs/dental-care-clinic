@@ -1,0 +1,445 @@
+
+/* ===== Contact Page ===== */
+
+.contact-hero,
+.contact-main,
+.contact-bottom {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contact-hero *,
+.contact-main *,
+.contact-bottom * {
+    box-sizing: border-box;
+}
+
+/* ===== Contact Hero ===== */
+
+.contact-hero {
+    padding: 65px 6%;
+    text-align: center;
+    background: linear-gradient(135deg, #f0fbfa, #f5f9fc);
+    animation: contactFadeUp 0.7s ease both;
+}
+
+.contact-hero-content {
+    max-width: 760px;
+    margin: auto;
+}
+
+.contact-subtitle {
+    display: inline-block;
+    color: #0caaa0;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 13px;
+}
+
+.contact-hero h1 {
+    color: #163b59;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.25;
+    margin: 0 0 18px;
+}
+
+.contact-hero p {
+    color: #687887;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* ===== Main Contact Layout ===== */
+
+.contact-main {
+    max-width: 1200px;
+    margin: 65px auto;
+    padding: 0 6%;
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 35px;
+    align-items: stretch;
+}
+
+/* ===== Contact Information ===== */
+
+.contact-info-panel {
+    background: #163b59;
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 38px 30px;
+    position: relative;
+    overflow: hidden;
+    animation: contactFadeLeft 0.8s ease both;
+}
+
+.contact-info-panel::after {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    right: -90px;
+    bottom: -90px;
+    background: rgba(12, 170, 160, 0.15);
+    pointer-events: none;
+}
+
+.contact-info-panel .contact-subtitle {
+    color: #7de0d6;
+}
+
+.contact-info-panel h2 {
+    font-size: 27px;
+    line-height: 1.35;
+    margin: 0 0 15px;
+}
+
+.contact-info-description {
+    color: #d5e4ed;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-icon {
+    width: 47px;
+    height: 47px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: rgba(12, 170, 160, 0.2);
+    font-size: 21px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.contact-info-item:hover .contact-icon {
+    transform: translateY(-4px) rotate(-4deg);
+    background: rgba(12, 170, 160, 0.35);
+}
+
+.contact-info-item h3 {
+    font-size: 15px;
+    margin: 0 0 5px;
+}
+
+.contact-info-item p,
+.contact-info-item a {
+    color: #d5e4ed;
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.contact-info-item a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info-item a:hover {
+    color: #7de0d6;
+}
+
+/* ===== Social Section ===== */
+
+.contact-social {
+    margin-top: 35px;
+    padding-top: 23px;
+    border-top: 1px solid rgba(255, 255, 255, 0.17);
+    position: relative;
+    z-index: 1;
+}
+
+.contact-social h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.contact-social p {
+    color: #d5e4ed;
+    font-size: 13px;
+}
+
+/* ===== Contact Form ===== */
+
+.contact-form-panel {
+    padding: 38px 35px;
+    border: 1px solid #e5eeee;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(22, 59, 89, 0.06);
+    animation: contactFadeRight 0.8s ease both;
+}
+
+.contact-form-panel h2 {
+    color: #163b59;
+    font-size: 29px;
+    margin: 0 0 10px;
+}
+
+.contact-form-description {
+    color: #687887;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 27px;
+}
+
+.contact-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.contact-field {
+    margin-bottom: 20px;
+    min-width: 0;
+}
+
+.contact-field label {
+    display: block;
+    color: #34495e;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.contact-field input,
+.contact-field textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #dce6e8;
+    border-radius: 7px;
+    padding: 13px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #34495e;
+    background: #fbfdfd;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+    border-color: #0caaa0;
+    box-shadow: 0 0 0 3px rgba(12, 170, 160, 0.12);
+}
+
+.contact-field textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+/* ===== Submit Button ===== */
+
+.contact-submit-btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 0;
+    border-radius: 7px;
+    background: #0caaa0;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-submit-btn span {
+    transition: transform 0.3s;
+}
+
+.contact-submit-btn:hover {
+    background: #07867e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(12, 170, 160, 0.22);
+}
+
+.contact-submit-btn:hover span {
+    transform: translateX(5px);
+}
+
+/* ===== Privacy Text ===== */
+
+.contact-privacy {
+    text-align: center;
+    color: #8795a1;
+    font-size: 11px;
+    margin-top: 18px;
+}
+
+/* ===== Success Message ===== */
+
+.contact-alert {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    background: #e6f8f6;
+    color: #087f79;
+    font-size: 14px;
+}
+
+/* ===== Bottom Call To Action ===== */
+
+.contact-bottom {
+    max-width: 1050px;
+    margin: 0 auto 75px;
+    width: 88%;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    border-radius: 15px;
+    background: #f0fbfa;
+}
+
+.contact-bottom h2 {
+    color: #163b59;
+    font-size: 25px;
+    margin: 0 0 9px;
+}
+
+.contact-bottom p {
+    color: #687887;
+    font-size: 14px;
+}
+
+.contact-bottom-btn {
+    display: inline-block;
+    flex-shrink: 0;
+    padding: 14px 20px;
+    border-radius: 7px;
+    background: #0caaa0;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.contact-bottom-btn:hover {
+    background: #07867e;
+    transform: translateY(-3px);
+}
+
+/* ===== Animations ===== */
+
+@keyframes contactFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes contactFadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes contactFadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== Tablet Responsive ===== */
+
+@media (max-width: 800px) {
+    .contact-main {
+        grid-template-columns: 1fr;
+        margin: 45px auto;
+    }
+
+    .contact-info-panel,
+    .contact-form-panel {
+        padding: 30px 25px;
+    }
+
+    .contact-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* ===== Mobile Responsive ===== */
+
+@media (max-width: 500px) {
+    .contact-hero {
+        padding: 45px 6%;
+    }
+
+    .contact-hero h1 {
+        font-size: 32px;
+    }
+
+    .contact-main {
+        padding: 0 5%;
+    }
+
+    .contact-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-form-panel h2 {
+        font-size: 25px;
+    }
+
+    .contact-bottom {
+        width: 90%;
+        padding: 25px 20px;
+        margin-bottom: 45px;
+    }
+
+    .contact-bottom h2 {
+        font-size: 22px;
+    }
+}
+
+/* ===== Reduced Motion ===== */
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-hero,
+    .contact-info-panel,
+    .contact-form-panel {
+        animation: none;
+    }
+
+    .contact-main *,
+    .contact-bottom * {
+        transition: none;
+    }
+}

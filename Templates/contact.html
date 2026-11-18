@@ -1,5 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %} contact {% endblock %}
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
 {% block content %}
  <section class="contact-hero">
     <div class="contact-hero-content">
